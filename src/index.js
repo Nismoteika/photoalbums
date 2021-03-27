@@ -4,9 +4,34 @@ import './styles/index.scss';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 
+import { composeWithDevTools } from 'redux-devtools-extension';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import thunkMiddleware from 'redux-thunk';
+
+import { createHashHistory } from 'history';
+import { routerMiddleware, ConnectedRouter } from 'connected-react-router';
+
+import createRootReducer from './reducers';
+
+const history = createHashHistory();
+const store = createStore(
+  createRootReducer(history),
+  composeWithDevTools(
+    applyMiddleware(
+      routerMiddleware(history),
+      thunkMiddleware
+    ),
+  ),
+)
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <ConnectedRouter history={history}>
+        <App />
+      </ConnectedRouter>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
