@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getAlbumsByUser } from '../actions/albumAction';
 
-function Main({ objAlbums, getAlbumsByUser, userId }) {
+function AlBumsByUser({ objAlbums, getAlbumsByUser, userId }) {
   useEffect(() => {
     getAlbumsByUser(userId);
   }, [])
@@ -32,4 +32,4 @@ const mapDispatchToProps = (dispatch) => ({
   getAlbumsByUser: (args) => dispatch(getAlbumsByUser(args)),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default connect(mapStateToProps, mapDispatchToProps)(AlBumsByUser);
