@@ -1,0 +1,1 @@
+export const GET_ALBUMS_BY_USER = 'GET_ALBUMS_BY_USER';

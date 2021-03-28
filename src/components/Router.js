@@ -1,10 +1,10 @@
 import { Switch, Route } from 'react-router-dom';
-import AllAlbums from '../pages/AllAlbums';
+import Main from '../pages/Main';
 
 function Router() {
   return (
     <Switch>
-      <Route exact path="/" component={AllAlbums} />
+      <Route exact path="/" component={Main} />
 
     </Switch>
   );
