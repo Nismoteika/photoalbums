@@ -1,8 +1,6 @@
 import Header from '../components/Header';
 import Router from '../components/Router';
 
-import '../styles/App.sass';
-
 function App() {
   return (
     <div className="wrapper">

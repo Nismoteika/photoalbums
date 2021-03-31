@@ -6,9 +6,17 @@ function PhotoGallery({ src, albumId, prevPhoto, nextPhoto }) {
 
   return (
     <div className="gallery">
-      <button onClick={() => prevPhoto()}>prev</button>
+      <button
+        className="gallery__btn_prev"
+        onClick={() => prevPhoto()}>
+        &lt;
+      </button>
       <img src={src} alt="" />
-      <button onClick={() => nextPhoto()}>next</button>
+      <button
+        className="gallery__btn_next"
+        onClick={() => nextPhoto()}>
+        &gt;
+      </button>
     </div>
   )
 }

@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import '../styles/Main.sass';
 
 import { connect } from 'react-redux';
 import { getUsers } from '../actions/userActions';

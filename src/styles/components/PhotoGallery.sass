@@ -1,0 +1,35 @@
+.gallery, .gallery img, .gallery button
+  position: absolute
+  
+.gallery
+  top: 0px
+  left: 0px
+  width: 100vw
+  height: 100vh
+  background-color: rgba(0,0,0,0.85)
+  z-index: $photo-galery
+
+  img
+    top: 50%
+    left: 50%
+    width: 600px
+    height: 600px
+    transform: translate(-300px, -300px)
+  
+  button
+    width: 50px
+    height: 50px
+    top: calc(50% - 25px)
+    border: 0
+    border-radius: 50%
+    background-color: rgba(255,255,255,0.5)
+    color: white
+    outline: none
+    font-size: 2rem
+  
+  &__btn_prev
+    left: 25%
+
+  &__btn_next
+    right: 25%
+

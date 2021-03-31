@@ -1,36 +1,14 @@
 @import-normalize;
+@import 'variables.sass';
+@import 'common.sass';
 
-* {
-  box-sizing: border-box;
-}
+// blocks
+@import 'grid-list.sass';
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+// pages
+@import 'pages/Main.sass';
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-a {
-  text-decoration: none;
-  color: #333;
-}
-
-.text-center {
-  text-align: center;
-}
-
-@import './grid-list.sass';
+// components
+@import 'components/Header.sass';
+@import 'components/App.sass';
+@import 'components/PhotoGallery.sass';
