@@ -23,7 +23,7 @@ function AlbumGridItem({ album }) {
     <li>
       <Link to={`/album/${album.id}`}>
         <h5>{album.title}</h5>
-        <img src={thumbUrl} />
+        <img src={thumbUrl} alt="" />
         <span>Pics: {countPics}</span>
       </Link>
     </li>

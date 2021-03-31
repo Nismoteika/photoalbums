@@ -1,39 +1,44 @@
 import { useEffect } from 'react';
 
 import { connect } from 'react-redux';
-import { getUsers } from '../actions/userActions';
+import { getPhotosByAlbum } from '../actions/photoActions';
 
-import AlbumsByUser from '../components/AlbumsByUser';
+import PhotoGridItem from '../components/PhotoGridItem';
 
-function Main({ users, usersLoaded, getUsers }) {
+function Album({ match, photos, getPhotosByAlbum }) {
   useEffect(() => {
-    getUsers();
-  }, [usersLoaded])
+    getPhotosByAlbum(match.params.id);
+  }, [])
 
-  var usersRender = [];
-  if(usersLoaded) {
-    usersRender = users.map((user) => (
-      <li key={user.id}>
-        <h5>{user.name}</h5>
-        <AlbumsByUser userId={user.id} />
-      </li>)
+  var photosRender = [];
+  if(photos && photos.length > 0) {
+    photosRender = photos.map((photo) => 
+      (
+        <PhotoGridItem photo={photo} />
+      )
     )
   }
 
   return (
     <ul>
-      { usersRender.length > 0 ? usersRender : <li>Loading...</li> }
+      { photos && photos.length > 0 ? photosRender : <li>Loading...</li> }
     </ul>
   );
 }
 
-const mapStateToProps = (store) => ({
-  users: store.users.users,
-  usersLoaded: store.users.loaded,
-})
+const mapStateToProps = (store, { match }) => {
+
+  if(store.photos[match.params.id]) {
+    return {
+      photos: store.photos[match.params.id].photos
+    };
+  } else { 
+    return {};
+  }
+}
 
 const mapDispatchToProps = (dispatch) => ({
-  getUsers: () => dispatch(getUsers()),
+  getPhotosByAlbum: (args) => dispatch(getPhotosByAlbum(args)),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default connect(mapStateToProps, mapDispatchToProps)(Album);
