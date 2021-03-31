@@ -1,1 +1,2 @@
 export const GET_ALBUMS_BY_USER = 'GET_ALBUMS_BY_USER';
+export const GET_PHOTOS_BY_ALBOM = 'GET_PHOTOS_BY_ALBOM';

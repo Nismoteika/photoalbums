@@ -1,0 +1,1 @@
+export const GET_PHOTOS_BY_ALBUM = 'GET_PHOTOS_BY_ALBUM';

@@ -2,7 +2,6 @@ import * as types from '../constants/userTypes';
 
 const initialState = {
   users: [],
-  totalUsers: 0,
   loaded: false,
 }
 
