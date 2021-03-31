@@ -36,8 +36,8 @@ export default function galery(state = initialState, action) {
       }
     case types.NEXT_PHOTO:
       var current = state.currentPhoto;
-      if(current === state.countPhotos)
-        current = state.countPhotos - 1;
+      if(current === state.countPhotos - 1)
+        current = 0;
       else
         current++;
       
