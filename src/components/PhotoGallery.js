@@ -1,9 +1,27 @@
+import { connect } from 'react-redux';
 
+import { prevPhoto, nextPhoto } from '../actions/galeryActions';
 
-function PhotoGallery({ photos }) {
+function PhotoGallery({ src, albumId, prevPhoto, nextPhoto }) {
+
   return (
-    <h1>PhotoGallery</h1>
+    <div className="gallery">
+      <button onClick={() => prevPhoto()}>prev</button>
+      <img src={src} alt="" />
+      <button onClick={() => nextPhoto()}>next</button>
+    </div>
   )
 }
 
-export default PhotoGallery;
+const mapStateToProps = (store, { albumId }) => {
+  return {
+    src: store.photos[albumId].photos[store.galery.currentPhoto].url
+  }
+}
+
+const mapDispatchToProps = (dispatch) => ({
+  prevPhoto: () => dispatch(prevPhoto()),
+  nextPhoto: () => dispatch(nextPhoto()),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(PhotoGallery);

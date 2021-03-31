@@ -3,15 +3,14 @@ import '../styles/grid-list.sass';
 
 import { connect } from 'react-redux';
 import { getPhotosByAlbum } from '../actions/photoActions';
+import { setCountPhotos, showModal } from '../actions/galeryActions';
 import { apiBase } from '../api';
 
 import PhotoGridItem from '../components/PhotoGridItem';
 import PhotoGallery from '../components/PhotoGallery';
 
-function Album({ match, photos, getPhotosByAlbum }) {
+function Album({ match, photos, getPhotosByAlbum, isModalShow, showModal, setCountPhotos }) {
   const [albumName, setAlbumName] = useState('');
-
-  const [isModalShow, setModalShow] = useState(false);
 
   useEffect(() => {
     fetch(`${apiBase}/albums/${match.params.id}`)
@@ -19,15 +18,17 @@ function Album({ match, photos, getPhotosByAlbum }) {
       .then(data => {
         setAlbumName(data.title);
       })
+      
     getPhotosByAlbum(match.params.id);
   }, [])
 
   var photosRender = [];
   if(photos) {
-    photosRender = photos.map((photo) => 
+    setCountPhotos(photos.length);
+    photosRender = photos.map((photo, idx) => 
       (
-        <li className="grid-list__item" onClick={() => setModalShow(!isModalShow)}>
-          <PhotoGridItem photo={photo} key={photo.id} />
+        <li className="grid-list__item" key={photo.id} onClick={() => showModal(idx)}>
+          <PhotoGridItem photo={photo} />
         </li>
       )
     )
@@ -36,7 +37,7 @@ function Album({ match, photos, getPhotosByAlbum }) {
   return (
     <div>
       <h2 className="text-center">{albumName}</h2>
-      {isModalShow && photos ? <PhotoGallery photos={photos} /> : null}
+      {isModalShow && photos ? <PhotoGallery albumId={match.params.id} /> : null}
       <ul className="grid-list">
         { photos && photos.length > 0 ? photosRender : <li>Loading...</li> }
       </ul>
@@ -45,17 +46,21 @@ function Album({ match, photos, getPhotosByAlbum }) {
 }
 
 const mapStateToProps = (store, { match }) => {
+  const obj = {}
   if(store.photos[match.params.id]) {
-    return {
-      photos: store.photos[match.params.id].photos
-    };
-  } else { 
-    return {};
+    obj.photos = store.photos[match.params.id].photos;
   }
+  const object = {
+    ...obj,
+    isModalShow: store.galery.isModalShow
+  }
+  return object;
 }
 
 const mapDispatchToProps = (dispatch) => ({
   getPhotosByAlbum: (args) => dispatch(getPhotosByAlbum(args)),
+  showModal: (args) => dispatch(showModal(args)),
+  setCountPhotos: (args) => dispatch(setCountPhotos(args)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Album);
