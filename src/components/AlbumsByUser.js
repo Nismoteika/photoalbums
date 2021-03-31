@@ -1,7 +1,9 @@
 import { useEffect } from 'react';
 
 import { connect } from 'react-redux';
-import { getAlbumsByUser } from '../actions/albumAction';
+import { getAlbumsByUser } from '../actions/albumActions';
+
+import AlbumGridItem from './AlbumGridItem';
 
 function AlBumsByUser({ objAlbums, getAlbumsByUser, userId }) {
   useEffect(() => {
@@ -10,10 +12,10 @@ function AlBumsByUser({ objAlbums, getAlbumsByUser, userId }) {
 
   var albumsRender = [];
   if (objAlbums && objAlbums.albums.length > 0) {
-    albumsRender = objAlbums.albums.map((album) => (
-      <li key={album.id}>
-        <h5>{album.title}</h5>
-      </li>)
+    albumsRender = objAlbums.albums.map((album) => 
+      (
+        <AlbumGridItem album={album} key={album.id} />
+      )
     )
   }
 
