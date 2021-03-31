@@ -21,10 +21,10 @@ function AlbumGridItem({ album }) {
 
   return (
     <li>
-      <Link to={`/album/${album.id}`}>
+      <Link to={`/album/${album.id}`} className="grid-list__item">
         <h5>{album.title}</h5>
         <img src={thumbUrl} alt="" />
-        <span>Pics: {countPics}</span>
+        <span>Картинок: {countPics}</span>
       </Link>
     </li>
   );

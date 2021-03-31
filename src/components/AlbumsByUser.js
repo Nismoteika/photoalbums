@@ -20,7 +20,7 @@ function AlBumsByUser({ objAlbums, getAlbumsByUser, userId }) {
   }
 
   return (
-    <ul>
+    <ul className="grid-list">
       { albumsRender.length > 0 ? albumsRender : <li>Loading...</li>}
     </ul>
   );

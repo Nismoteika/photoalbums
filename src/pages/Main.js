@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import '../styles/Main.sass';
 
 import { connect } from 'react-redux';
 import { getUsers } from '../actions/userActions';
@@ -14,14 +15,14 @@ function Main({ users, usersLoaded, getUsers }) {
   if(usersLoaded) {
     usersRender = users.map((user) => (
       <li key={user.id}>
-        <h5>{user.name}</h5>
+        <h2>Автор {user.name}</h2>
         <AlbumsByUser userId={user.id} />
       </li>)
     )
   }
 
   return (
-    <ul>
+    <ul className="users-list">
       { usersRender.length > 0 ? usersRender : <li>Loading...</li> }
     </ul>
   );

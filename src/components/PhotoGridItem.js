@@ -1,14 +1,14 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 function PhotoGridItem({ photo }) {
   useEffect(() => {
   }, [])
 
   return (
-    <li>
+    <React.Fragment>
       <h5>{photo.title}</h5>
       <img src={photo.thumbnailUrl} alt="" />
-    </li>
+    </React.Fragment>
   );
 }
 
