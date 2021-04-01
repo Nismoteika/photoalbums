@@ -3,13 +3,13 @@ import '../styles/grid-list.sass';
 
 import { connect } from 'react-redux';
 import { getPhotosByAlbum } from '../actions/photoActions';
-import { setCountPhotos, showModal } from '../actions/galeryActions';
+import { setCountPhotos, showGallery } from '../actions/galeryActions';
 import { apiBase } from '../api';
 
 import PhotoGridItem from '../components/PhotoGridItem';
 import PhotoGallery from '../components/PhotoGallery';
 
-function Album({ match, photos, getPhotosByAlbum, isModalShow, showModal, setCountPhotos }) {
+function Album({ match, photos, getPhotosByAlbum, isModalShow, showGallery, setCountPhotos }) {
   const [albumName, setAlbumName] = useState('');
 
   useEffect(() => {
@@ -27,7 +27,7 @@ function Album({ match, photos, getPhotosByAlbum, isModalShow, showModal, setCou
     setCountPhotos(photos.length);
     photosRender = photos.map((photo, idx) => 
       (
-        <li className="grid-list__item" key={photo.id} onClick={() => showModal(idx)}>
+        <li className="grid-list__item" key={photo.id} onClick={() => showGallery(idx)}>
           <PhotoGridItem photo={photo} />
         </li>
       )
@@ -59,7 +59,7 @@ const mapStateToProps = (store, { match }) => {
 
 const mapDispatchToProps = (dispatch) => ({
   getPhotosByAlbum: (args) => dispatch(getPhotosByAlbum(args)),
-  showModal: (args) => dispatch(showModal(args)),
+  showGallery: (args) => dispatch(showGallery(args)),
   setCountPhotos: (args) => dispatch(setCountPhotos(args)),
 })
 
