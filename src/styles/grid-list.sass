@@ -1,6 +1,7 @@
 .grid-list
   display: flex
   flex-flow: row wrap
+  justify-content: flex-start
 
   & .grid-list__item
     display: flex
@@ -24,3 +25,6 @@
       width: 150px
       height: 150px
     
+@media (max-width: 1150px)
+  .grid-list
+    justify-content: center

@@ -47,3 +47,28 @@
     width: 100vw
     height: 100vh
 
+@media (max-width: 1430px)
+  .gallery
+    &__btn_prev
+      left: 10%
+
+    &__btn_next
+      right: 10%
+
+@media (max-width: 680px)
+  .gallery
+    img
+      width: 85%
+      height: auto
+      text-align: center
+      transform: translate(-50%, -50%)
+
+    button.gallery__btn_prev
+      top: auto
+      bottom: 5%
+      left: 30%
+
+    button.gallery__btn_next
+      top: auto
+      bottom: 5%
+      right: 30%
