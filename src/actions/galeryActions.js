@@ -1,6 +1,6 @@
 import * as types from '../constants/galleryTypes';
 
-export const showModal = (idx) => {
+export const showGallery = (idx) => {
   return dispatch => {
     dispatch(showModalAction())
     if(idx)
@@ -15,14 +15,12 @@ export const setCountPhotos = (countPhotos) => {
 }
 
 export const prevPhoto = () => {
-  console.log('prev')
   return dispatch => {
     dispatch(prevPhotoAction());
   }
 }
 
 export const nextPhoto = () => {
-  console.log('next')
   return dispatch => {
     dispatch(nextPhotoAction());
   }
