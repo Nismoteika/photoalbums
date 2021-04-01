@@ -1,4 +1,8 @@
-.gallery, .gallery img, .gallery button, .gallery__background
+.gallery,
+.gallery img,
+.gallery button,
+.gallery__background,
+.gallery__title
   position: absolute
   
 .gallery
@@ -6,7 +10,7 @@
   left: 0px
   width: 100vw
   height: 100vh
-  background-color: rgba(0,0,0,0.85)
+  background-color: rgba(0,0,0,0.9)
   z-index: $photo-galery
 
   img
@@ -16,6 +20,16 @@
     height: 600px
     transform: translate(-300px, -300px)
     cursor: pointer
+    z-index: $photo-galery + 1
+
+  &__title
+    top: 50%
+    left: 50%
+    width: 600px
+    color: #ddd
+    font-size: 1.2rem
+    transform: translate(-300px, -360px)
+    text-align: center
     z-index: $photo-galery + 1
   
   button
@@ -49,6 +63,12 @@
 
 @media (max-width: 1430px)
   .gallery
+    &__title
+      top: 15%
+      left: 10%
+      width: 80%
+      transform: none
+
     &__btn_prev
       left: 10%
 

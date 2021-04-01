@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import { prevPhoto, nextPhoto, showGallery } from '../actions/galeryActions';
 
-function PhotoGallery({ src, albumId, prevPhoto, nextPhoto, showGallery }) {
+function PhotoGallery({ src, photoName, photoSrc, prevPhoto, nextPhoto, showGallery }) {
 
   return (
     <div className="gallery">
@@ -16,7 +16,8 @@ function PhotoGallery({ src, albumId, prevPhoto, nextPhoto, showGallery }) {
         onClick={() => prevPhoto()}>
         &lt;
       </button>
-      <img src={src} alt="" onClick={() => nextPhoto()} />
+      <span className="gallery__title">{photoName}</span>
+      <img src={photoSrc} alt="" onClick={() => nextPhoto()} />
       <button
         className="gallery__btn_next"
         onClick={() => nextPhoto()}>
@@ -30,8 +31,10 @@ function PhotoGallery({ src, albumId, prevPhoto, nextPhoto, showGallery }) {
 }
 
 const mapStateToProps = (store, { albumId }) => {
+  const photo = store.photos[albumId].photos[store.galery.currentPhoto];
   return {
-    src: store.photos[albumId].photos[store.galery.currentPhoto].url
+    photoName: photo.title,
+    photoSrc: photo.url,
   }
 }
 
